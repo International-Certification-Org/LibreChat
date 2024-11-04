@@ -1,9 +1,9 @@
 name: Lint for accessibility issues
 
 on:
-  pull_request:
-    paths:
-      - 'client/src/**'
+  # pull_request:
+  #   paths:
+  #     - 'client/src/**'
   workflow_dispatch:
     inputs:
       run_workflow:

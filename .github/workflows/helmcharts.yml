@@ -2,9 +2,10 @@ name: Build Helm Charts on Tag
 
 # The workflow is triggered when a tag is pushed
 on:
-  push:
-    tags:
-      - "*"
+  workflow_dispatch:
+  # push:
+  #   tags:
+  #     - "*"
 
 jobs:
   release:
