@@ -34,6 +34,7 @@ RUN npm prune --production
 FROM base AS api-build
 WORKDIR /app
 COPY api ./api
+COPY .env.example .env
 COPY config ./config
 COPY --from=data-provider-build /app/packages/data-provider/dist ./packages/data-provider/dist
 COPY --from=client-build /app/client/dist ./client/dist
