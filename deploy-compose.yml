@@ -28,7 +28,7 @@ services:
       - SEARCH=true
     volumes:
       - type: bind
-        source: home/deploymentuser/librechat.yaml
+        source: /home/deploymentuser/librechat.yaml
         target: /app/librechat.yaml
       - librechat-images:/app/client/public/images
       - librechat-logs:/app/api/logs
