@@ -5,10 +5,10 @@ services:
     #   context: .
     #   dockerfile: Dockerfile.multi
     #   target: api-build
-    image: ghcr.io/danny-avila/librechat-dev-api:latest
+    image: ghcr.io/international-certification-org/librechat-api:latest
     container_name: LibreChat-API
-    ports:
-      - 3080:3080
+    # ports:
+    #   - 3080:3080
     depends_on:
       - mongodb
       - rag_api
@@ -22,21 +22,23 @@ services:
       - NODE_ENV=production
       - MONGO_URI=mongodb://mongodb:27017/LibreChat
       - MEILI_HOST=http://meilisearch:7700
+      - MEILI_MASTER_KEY=5c71cf56d672d009e36070b5bc5e47b743535ae55c818ae3b735bb6ebfb4ba63
       - RAG_PORT=${RAG_PORT:-8000}
       - RAG_API_URL=http://rag_api:${RAG_PORT:-8000}
+      - SEARCH=true
     volumes:
       - type: bind
         source: ./librechat.yaml
         target: /app/librechat.yaml
       - ./images:/app/client/public/images
-      - ./logs:/app/api/logs
+      #- ./logs:/app/api/logs
 
   client:
     image: nginx:1.27.0-alpine
     container_name: LibreChat-NGINX
-    ports:
-      - 80:80
-      - 443:443
+    # ports:
+    #   - 8080:80
+    #   - 443:443
     depends_on:
       - api
     restart: always
