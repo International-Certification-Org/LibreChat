@@ -39,10 +39,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Prepare the environment
-      # - name: Prepare environment
-      #   run: |
-      #     cp .env.example .env
+      #Prepare the environment
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
 
       # Build and push Docker images for each target
       - name: Build and push Docker images
